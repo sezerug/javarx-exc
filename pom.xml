@@ -52,39 +52,5 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>releases</name>
-            <url>http://repo.mkk.com.tr/artifactory/releases</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>http://repo.mkk.com.tr/artifactory/snapshots</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>releases</name>
-            <url>http://repo.mkk.com.tr/artifactory/releases</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots/>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>http://repo.mkk.com.tr/artifactory/snapshots</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>
