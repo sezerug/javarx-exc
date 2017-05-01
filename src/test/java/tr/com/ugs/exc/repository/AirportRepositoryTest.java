@@ -3,9 +3,7 @@ package tr.com.ugs.exc.repository;
 
 import org.junit.Before;
 import org.junit.Test;
-import rx.observables.GroupedObservable;
 import tr.com.ugs.exc.domain.Airport;
-import tr.com.ugs.exc.domain.Country;
 
 import java.util.ArrayList;
 import java.util.List;
