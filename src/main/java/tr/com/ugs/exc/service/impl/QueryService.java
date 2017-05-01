@@ -1,11 +1,13 @@
 package tr.com.ugs.exc.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rx.Observable;
 import tr.com.ugs.exc.domain.Airport;
 import tr.com.ugs.exc.domain.Country;
 import tr.com.ugs.exc.service.IQueryService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sezerug on 01/05/2017.
@@ -17,11 +19,13 @@ public class QueryService implements IQueryService {
     private AirportService airportService = new AirportService();
 
     @Override
-    public Observable<Airport> filterByCountry(String countryCode) {
-        Observable<Country> countrySource = countryService.filterByCode(countryCode);
-        Observable<Airport> airportSource = countrySource.flatMap(country ->
-                airportService.filterByIsoCountry(country.getCode()));
-        return airportSource;
+    public Observable<Country> filterByCountryCode(String code) {
+        Observable<Country> countrySource = countryService.filterByCode(code);
+        return countrySource.flatMap(
+                country -> airportService.filterByIsoCountry(country.getCode()).toList()
+                , ((country, airports) -> {
+                    country.getAirports().addAll(airports);
+                    return country;
+                }));
     }
-
 }
