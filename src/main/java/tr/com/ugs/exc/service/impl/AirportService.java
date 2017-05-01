@@ -2,13 +2,9 @@ package tr.com.ugs.exc.service.impl;
 
 import org.springframework.stereotype.Component;
 import rx.Observable;
-import rx.functions.Func1;
 import tr.com.ugs.exc.domain.Airport;
-import tr.com.ugs.exc.domain.Runway;
 import tr.com.ugs.exc.repository.AirportRepository;
 import tr.com.ugs.exc.service.IAirportService;
-
-import java.util.List;
 
 /**
  * Created by sezerug on 01/05/2017.

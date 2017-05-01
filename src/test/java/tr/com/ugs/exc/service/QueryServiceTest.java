@@ -2,12 +2,8 @@ package tr.com.ugs.exc.service;
 
 import org.junit.Before;
 import org.junit.Test;
-import tr.com.ugs.exc.domain.Airport;
 import tr.com.ugs.exc.domain.Country;
 import tr.com.ugs.exc.service.impl.QueryService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

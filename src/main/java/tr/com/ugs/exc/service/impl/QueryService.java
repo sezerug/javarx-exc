@@ -2,12 +2,8 @@ package tr.com.ugs.exc.service.impl;
 
 import org.springframework.stereotype.Component;
 import rx.Observable;
-import tr.com.ugs.exc.domain.Airport;
 import tr.com.ugs.exc.domain.Country;
 import tr.com.ugs.exc.service.IQueryService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sezerug on 01/05/2017.
