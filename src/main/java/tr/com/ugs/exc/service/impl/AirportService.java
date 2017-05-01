@@ -2,9 +2,13 @@ package tr.com.ugs.exc.service.impl;
 
 import org.springframework.stereotype.Component;
 import rx.Observable;
+import rx.functions.Func1;
 import tr.com.ugs.exc.domain.Airport;
+import tr.com.ugs.exc.domain.Runway;
 import tr.com.ugs.exc.repository.AirportRepository;
 import tr.com.ugs.exc.service.IAirportService;
+
+import java.util.List;
 
 /**
  * Created by sezerug on 01/05/2017.
@@ -13,9 +17,17 @@ import tr.com.ugs.exc.service.IAirportService;
 public class AirportService implements IAirportService {
 
     private final AirportRepository repository = new AirportRepository();
+    private final RunwayService runwayService = new RunwayService();
 
     @Override
     public Observable<Airport> filterByIsoCountry(String isoCountry) {
-        return repository.getData().filter(airport -> airport.getIsoCountry().equals(isoCountry));
+        Observable<Airport> airportSource = repository.getData().filter(airport -> airport.getIsoCountry().equals(isoCountry));
+
+        return airportSource.flatMap(
+                airport -> runwayService.filterByAirportRef(airport.getId()).toList()
+                , ((airport, runways) -> {
+                    airport.getRunways().addAll(runways);
+                    return airport;
+                }));
     }
 }

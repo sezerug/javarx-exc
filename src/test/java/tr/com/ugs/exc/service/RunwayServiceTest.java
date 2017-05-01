@@ -26,7 +26,7 @@ public class RunwayServiceTest {
     public void filterByAirportRefSuccess() {
         int airportRef = 4528;
         int numberOfRunways = 3;
-        Airport airport = new Airport(airportRef, "LTBA", "large_airport", "Atatürk International Airport", "TR");
+        Airport airport = new Airport(airportRef, "LTBA", "large_airport", "Atatürk International Airport", "TR", null);
         List<Runway> runways = service.filterByAirportRef(airport.getId()).toList().toBlocking().first();
         assertEquals(numberOfRunways, runways.size());
     }
