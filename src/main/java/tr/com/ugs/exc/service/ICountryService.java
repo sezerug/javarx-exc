@@ -9,6 +9,6 @@ import tr.com.ugs.exc.domain.Country;
  */
 public interface ICountryService {
 
-    Observable<Country> filterByCountryCode(String countryCode);
+    Observable<Country> filterByCode(String code);
 
 }

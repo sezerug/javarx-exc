@@ -21,7 +21,7 @@ public class CountryServiceTest {
     @Test
     public void filterByCountryCodeSuccess() {
         Country expected = new Country(302667, "TR", "Turkey", "AS");
-        Country actual = service.filterByCountryCode("TR").toBlocking().first();
+        Country actual = service.filterByCode("TR").toBlocking().first();
         assertEquals(expected, actual);
     }
 }
