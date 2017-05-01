@@ -24,7 +24,7 @@ public class AirportRepositoryTest {
     @Test
     public void getAirportByIdSuccess() {
         int id = 4528;
-        Airport expected = new Airport(id, "LTBA", "large_airport", "Atatürk International Airport", "TR", null);
+        Airport expected = new Airport(id, "LTBA", "large_airport", "Atatürk International Airport", "TR", new ArrayList<>());
         Airport actual = repository.getData().filter(airport -> id == airport.getId()).toBlocking().single();
         assertEquals(expected, actual);
     }
