@@ -8,6 +8,9 @@ import tr.com.ugs.exc.domain.Runway;
  */
 public interface IRunwayService {
 
+
+    Observable<Runway> listAll();
+
     Observable<Runway> filterByAirportRef(int airportRef);
 
 }

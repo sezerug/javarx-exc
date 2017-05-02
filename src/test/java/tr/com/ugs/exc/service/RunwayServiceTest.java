@@ -23,6 +23,13 @@ public class RunwayServiceTest {
     }
 
     @Test
+    public void listAllSuccess() {
+        int numberOfRunways = 39536;
+        List<Runway> runways = service.listAll().toList().toBlocking().first();
+        assertEquals(numberOfRunways, runways.size());
+    }
+
+    @Test
     public void filterByAirportRefSuccess() {
         int airportRef = 4528;
         int numberOfRunways = 3;

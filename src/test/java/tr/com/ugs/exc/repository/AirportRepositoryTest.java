@@ -39,7 +39,7 @@ public class AirportRepositoryTest {
 
     @Test
     public void groupByIsoCountry() {
-        repository.getData().filter(airport -> airport.getIsoCountry().startsWith("T")).groupBy(Airport::getIsoCountry)
+        repository.getData().filter(airport -> airport.getIsoCountry().startsWith("TR")).groupBy(Airport::getIsoCountry)
                 .flatMap(groups -> groups.collect(Bucket::new, (bucket, rows) -> {
                     bucket.name = rows.getIsoCountry();
                     bucket.airports.add(rows);

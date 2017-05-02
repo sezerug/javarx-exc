@@ -22,6 +22,13 @@ public class AirportServiceTest {
     }
 
     @Test
+    public void listAllSuccess() {
+        int numberOfAirports = 46505;
+        List<Airport> airports = service.listAll().toList().toBlocking().first();
+        assertEquals(numberOfAirports, airports.size());
+    }
+
+    @Test
     public void filterByCountryCodeSuccess() {
         String isoCountry = "TR";
         int countByIsoCountry = 119;

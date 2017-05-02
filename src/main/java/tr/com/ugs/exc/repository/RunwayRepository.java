@@ -2,6 +2,7 @@ package tr.com.ugs.exc.repository;
 
 import rx.Observable;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 import tr.com.ugs.exc.domain.Runway;
 
 import static tr.com.ugs.exc.util.CSVUtils.getReader;
@@ -15,7 +16,7 @@ public class RunwayRepository implements Repository<Runway> {
 
     @Override
     public Observable<Runway> getData() {
-        return Observable.from(getReader(FILE_NAME)).skip(1).map(mapToRunway);
+        return Observable.from(getReader(FILE_NAME)).skip(1).map(mapToRunway).subscribeOn(Schedulers.newThread()).observeOn(Schedulers.newThread());
     }
 
     private Func1<String[], Runway> mapToRunway = (line) -> (

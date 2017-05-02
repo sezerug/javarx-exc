@@ -2,6 +2,7 @@ package tr.com.ugs.exc.service.impl;
 
 import org.springframework.stereotype.Component;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 import tr.com.ugs.exc.domain.Airport;
 import tr.com.ugs.exc.repository.AirportRepository;
 import tr.com.ugs.exc.service.IAirportService;
@@ -16,6 +17,11 @@ public class AirportService implements IAirportService {
     private final RunwayService runwayService = new RunwayService();
 
     @Override
+    public Observable<Airport> listAll() {
+        return repository.getData();
+    }
+
+    @Override
     public Observable<Airport> filterByIsoCountry(String isoCountry) {
         Observable<Airport> airportSource = repository.getData().filter(airport -> airport.getIsoCountry().equals(isoCountry));
 
@@ -24,6 +30,6 @@ public class AirportService implements IAirportService {
                 , ((airport, runways) -> {
                     airport.getRunways().addAll(runways);
                     return airport;
-                }));
+                })).subscribeOn(Schedulers.newThread()).observeOn(Schedulers.newThread());
     }
 }

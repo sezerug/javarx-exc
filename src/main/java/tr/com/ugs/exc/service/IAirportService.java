@@ -8,6 +8,8 @@ import tr.com.ugs.exc.domain.Airport;
  */
 public interface IAirportService {
 
+    Observable<Airport> listAll();
+
     Observable<Airport> filterByIsoCountry(String isoCountry);
 
 }
