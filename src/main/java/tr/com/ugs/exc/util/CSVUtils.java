@@ -26,11 +26,11 @@ public final class CSVUtils {
     }
 
     public static Double parseNotNull(String num) {
-        double val = 0.0;
+        double val;
         try {
             val = Double.parseDouble(num);
         } catch (NumberFormatException e) {
-          //ignore
+            val = 0.0;
         }
         return val;
     }

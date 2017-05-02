@@ -37,7 +37,7 @@ public class CountryControllerTest {
                 String.class);
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("data:{\"id\":302667,\"code\":\"TR\",\"name\":\"Turkey\",\"continent\":\"AS\"}\n\n", response.getBody());
+        assertEquals("data:{\"id\":302667,\"code\":\"TR\",\"name\":\"Turkey\",\"continent\":\"AS\",\"airports\":[]}\n\n", response.getBody());
     }
 
     private String path(String context) {
